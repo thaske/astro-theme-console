@@ -5,11 +5,11 @@ import Layout from "@thaske/astro-theme-console/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { ANALYTICS_ID, SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 
-const posts = await getCollection("blog", (post) =>
-  import.meta.env.PROD ? !post.data.draft : true,
-);
-
-const sortedPosts = posts
+const posts = (
+  await getCollection("blog", (post) =>
+    import.meta.env.PROD ? !post.data.draft : true,
+  )
+)
   .sort(
     (a, b) =>
       new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
@@ -41,9 +41,9 @@ const sortedPosts = posts
   <h1>Latest posts</h1>
 
   <div class="posts-list">
-    {sortedPosts.map((post) => <PostListItem post={post} />)}
+    {posts.map((post) => <PostListItem post={post} />)}
     {
-      sortedPosts.length === 0 && (
+      posts.length === 0 && (
         <p>No posts found. Check back soon for new content.</p>
       )
     }
