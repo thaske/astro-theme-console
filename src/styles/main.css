@@ -1,0 +1,20 @@
+/* Hugo Console Theme CSS */
+@import "./terminal.css";
+@import "./console.css";
+
+/* Fix image aspect ratios */
+img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Code blocks - ensure Hugo theme styling is preserved with syntax highlighting */
+pre {
+  border: 1px solid var(--secondary-color) !important;
+  background-color: var(--block-background-color) !important;
+  padding: var(--global-space) !important;
+}
+
+pre code {
+  background-color: var(--block-background-color) !important;
+}

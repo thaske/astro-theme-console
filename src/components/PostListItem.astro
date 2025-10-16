@@ -1,0 +1,20 @@
+---
+import { type CollectionEntry } from "astro:content";
+import { format } from "date-fns";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { data, id } = post;
+const summary = data.description || "";
+---
+
+<div class="post">
+  <p>
+    <div class="date">{format(data.pubDate, "MMM dd, yyyy")}</div>
+    <h1><a href={`/posts/${id}`} title={data.title}>{data.title}</a></h1>
+    {summary}
+  </p>
+</div>

@@ -1,0 +1,65 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+const pathname = Astro.url.pathname;
+
+// Build breadcrumb path segments
+const pathSegments = pathname.split("/").filter(Boolean);
+---
+
+<div class="terminal-nav">
+  <header class="terminal-logo">
+    <div class="logo terminal-prompt">
+      <a href="/" class="no-style site-name">{title}</a>:~#
+      {
+        pathSegments.map((segment, index) => {
+          const path = "/" + pathSegments.slice(0, index + 1).join("/");
+          return (
+            <>
+              <a href={path}>{segment}</a>/
+            </>
+          );
+        })
+      }
+    </div>
+  </header>
+  <nav class="terminal-menu">
+    <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+      <li property="itemListElement" typeof="ListItem">
+        <a property="item" typeof="WebPage" href="/about">
+          <span property="name">about/</span>
+        </a>
+        <meta property="position" content="1" />
+      </li>
+      <li property="itemListElement" typeof="ListItem">
+        <a property="item" typeof="WebPage" href="/posts">
+          <span property="name">posts/</span>
+        </a>
+        <meta property="position" content="2" />
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<style>
+  .no-style {
+    border: none;
+    text-decoration: none;
+  }
+
+  .logo {
+    font-weight: normal;
+  }
+
+  /* Responsive - show only first 2 chars on mobile */
+  @media only screen and (max-width: 850px) {
+    .site-name {
+      width: 2ch;
+      overflow: hidden;
+      display: inline-block;
+    }
+  }
+</style>

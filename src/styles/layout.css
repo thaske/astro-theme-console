@@ -1,0 +1,9 @@
+.container {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 calc(var(--global-space) * 2);
+}
+
+.main-content {
+  margin-bottom: calc(var(--global-space) * 10);
+}

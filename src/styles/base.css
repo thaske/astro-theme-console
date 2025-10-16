@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+  text-rendering: geometricprecision;
+}
+
+*::selection {
+  background: var(--primary-color);
+  color: var(--invert-font-color);
+}
+
+body {
+  font-family: var(--font-stack);
+  font-size: var(--global-font-size);
+  color: var(--font-color);
+  line-height: var(--global-line-height);
+  margin: 0;
+  word-wrap: break-word;
+  background-color: var(--background-color);
+  margin-bottom: 75px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-stack);
+  clear: both;
+}
+
+strong {
+  font-weight: 700;
+}
+
+.active a {
+  text-decoration: underline;
+}

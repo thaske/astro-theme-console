@@ -1,0 +1,26 @@
+---
+import Layout from "@thaske/astro-theme-console/layouts/Layout.astro";
+
+import { ANALYTICS_ID, SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+---
+
+<Layout
+  title={SITE_TITLE}
+  description={SITE_DESCRIPTION}
+  analyticsId={ANALYTICS_ID}
+>
+  <h1>About</h1>
+  <p>
+    This is a minimal, terminal-style theme for Astro, inspired by classic
+    console interfaces.
+  </p>
+
+  <h2>Installation</h2>
+  <pre><code>bun add github:thaske/astro-theme-console</code></pre>
+
+  <h2>Usage</h2>
+  <p>
+    Import components from the theme and use them in your Astro pages. See the
+    README for full documentation.
+  </p>
+</Layout>

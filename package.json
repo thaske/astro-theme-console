@@ -1,0 +1,42 @@
+{
+  "name": "@thaske/astro-theme-console",
+  "version": "1.0.0",
+  "description": "A minimal, terminal-style theme for Astro",
+  "type": "module",
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thaske/astro-theme-console"
+  },
+  "keywords": [
+    "astro",
+    "astro-theme",
+    "blog",
+    "terminal",
+    "console",
+    "minimal"
+  ],
+  "exports": {
+    "./components/*": "./src/components/*",
+    "./layouts/*": "./src/layouts/*",
+    "./styles/*": "./src/styles/*"
+  },
+  "files": [
+    "src",
+    "public"
+  ],
+  "peerDependencies": {
+    "astro": "^5.0.0"
+  },
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "reading-time": "^1.5.0"
+  },
+  "devDependencies": {
+    "@astrojs/mdx": "^4.3.7",
+    "@astrojs/sitemap": "^3.6.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1"
+  }
+}

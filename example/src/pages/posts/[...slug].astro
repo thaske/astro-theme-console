@@ -1,0 +1,34 @@
+---
+import Layout from "@thaske/astro-theme-console/layouts/Layout.astro";
+
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import { format } from "date-fns";
+
+import { ANALYTICS_ID, SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: post,
+  }));
+}
+
+type Props = CollectionEntry<"blog">;
+
+const post = Astro.props;
+const { Content } = await render(post);
+const formattedDate = format(post.data.pubDate, "MMM. d, yyyy");
+---
+
+<Layout
+  title={SITE_TITLE}
+  description={post.data.description || SITE_DESCRIPTION}
+  analyticsId={ANALYTICS_ID}
+>
+  <h1>{post.data.title}</h1>
+
+  {formattedDate}
+  <br /><br />
+  <Content />
+</Layout>

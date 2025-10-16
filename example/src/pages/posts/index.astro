@@ -1,0 +1,35 @@
+---
+import PostListItem from "@thaske/astro-theme-console/components/PostListItem.astro";
+import Layout from "@thaske/astro-theme-console/layouts/Layout.astro";
+
+import { getCollection } from "astro:content";
+
+import { ANALYTICS_ID, SITE_TITLE } from "../../consts";
+
+const posts = (
+  await getCollection("blog", (post) =>
+    import.meta.env.PROD ? !post.data.draft : true,
+  )
+).sort(
+  (a, b) =>
+    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
+);
+---
+
+<Layout
+  title={SITE_TITLE}
+  description="All blog posts"
+  analyticsId={ANALYTICS_ID}
+>
+  <h1>Posts</h1>
+  <br />
+
+  <div class="posts-list">
+    {posts.map((post) => <PostListItem post={post} />)}
+    {
+      posts.length === 0 && (
+        <p>No posts found. Check back soon for new content.</p>
+      )
+    }
+  </div>
+</Layout>

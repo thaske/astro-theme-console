@@ -1,0 +1,53 @@
+---
+import Footer from "../components/Footer.astro";
+import GoogleAnalytics from "../components/GoogleAnalytics.astro";
+import Header from "../components/Header.astro";
+import "../styles/main.css";
+
+interface Props {
+  title?: string;
+  description: string;
+  analyticsId?: string;
+}
+
+const { title, description, analyticsId } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{title}{Astro.url.pathname}</title>
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="all,follow" />
+    <meta name="googlebot" content="index,follow,snippet,archive" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={Astro.url.href} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={Astro.url.href} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    {analyticsId && <GoogleAnalytics id={analyticsId} />}
+  </head>
+  <body class="terminal">
+    <div class="container">
+      <Header title={title} />
+    </div>
+
+    <div class="container">
+      <slot />
+      <Footer />
+    </div>
+  </body>
+</html>

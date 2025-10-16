@@ -1,0 +1,51 @@
+---
+import PostListItem from "@thaske/astro-theme-console/components/PostListItem.astro";
+import Layout from "@thaske/astro-theme-console/layouts/Layout.astro";
+
+import { getCollection } from "astro:content";
+import { ANALYTICS_ID, SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+
+const posts = await getCollection("blog", (post) =>
+  import.meta.env.PROD ? !post.data.draft : true,
+);
+
+const sortedPosts = posts
+  .sort(
+    (a, b) =>
+      new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
+  )
+  .slice(0, 3);
+---
+
+<Layout
+  title={SITE_TITLE}
+  description={SITE_DESCRIPTION}
+  analyticsId={ANALYTICS_ID}
+>
+  <h1>Welcome to Console Theme</h1>
+  <p>
+    This is a minimal, terminal-style theme for Astro. Check out the <a
+      href="/posts">posts</a
+    > or learn more <a href="/about">about</a> this theme.
+  </p>
+
+  <h2>Features</h2>
+  <ul>
+    <li>Terminal-inspired design</li>
+    <li>Breadcrumb navigation</li>
+    <li>Responsive layout</li>
+    <li>MDX support</li>
+    <li>Syntax highlighting</li>
+  </ul>
+
+  <h1>Latest posts</h1>
+
+  <div class="posts-list">
+    {sortedPosts.map((post) => <PostListItem post={post} />)}
+    {
+      sortedPosts.length === 0 && (
+        <p>No posts found. Check back soon for new content.</p>
+      )
+    }
+  </div>
+</Layout>

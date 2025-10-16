@@ -1,0 +1,15 @@
+/* Utility Classes */
+.no-underline {
+  text-decoration: none !important;
+}
+
+.no-underline:hover::after {
+  display: none !important;
+}
+
+/* Enhanced focus states for accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}

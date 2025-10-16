@@ -1,0 +1,17 @@
+{
+  "name": "astro-theme-console-example",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.7",
+    "@astrojs/sitemap": "^3.6.0",
+    "@thaske/astro-theme-console": "github:thaske/astro-theme-console",
+    "astro": "^5.14.5"
+  }
+}
