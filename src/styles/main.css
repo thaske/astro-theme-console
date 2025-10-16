@@ -2,19 +2,57 @@
 @import "./terminal.css";
 @import "./console.css";
 
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #181a1b;
+    --font-color: #dbd8d3;
+    --invert-font-color: #e8e6e3;
+    --secondary-color: #9e9689;
+    --tertiary-color: #9e9689;
+    --primary-color: #35a4e7;
+    --error-color: #f73b8e;
+    --progress-bar-background: #585f63;
+    --progress-bar-fill: #dbd8d3;
+    --code-bg-color: #1a282e;
+  }
+}
+
+/* Dark mode support for syntax highlighting */
+@media (prefers-color-scheme: dark) {
+  .astro-code,
+  .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
+}
+
+/* Code blocks */
+pre {
+  border: 1px solid var(--secondary-color) !important;
+  padding: var(--global-space) !important;
+
+  /* Remove block background color from terminal.css */
+  --block-background-color: none;
+}
+
 /* Fix image aspect ratios */
 img {
   max-width: 100% !important;
   height: auto !important;
 }
 
-/* Code blocks - ensure Hugo theme styling is preserved with syntax highlighting */
-pre {
-  border: 1px solid var(--secondary-color) !important;
-  background-color: var(--block-background-color) !important;
-  padding: var(--global-space) !important;
+/* Fix spacing between elements in header terminal prompt */
+.terminal-prompt {
+  display: flex;
+  gap: 4px;
+  align-items: baseline;
 }
 
-pre code {
-  background-color: var(--block-background-color) !important;
+/* Make sure list items with paragraphs don't have extra spacing */
+li p {
+  display: inline;
 }
