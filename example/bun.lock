@@ -204,7 +204,7 @@
 
     "@swc/helpers": ["@swc/helpers@0.5.17", "", { "dependencies": { "tslib": "^2.8.0" } }, "sha512-5IKx/Y13RsYd+sauPb2x+U/xZikHjolzfuDgTAl/Tdf3Q8rslRvC19NKDLgAJQ6wsqADk10ntlv08nPFw/gO/A=="],
 
-    "@thaske/astro-theme-console": ["@thaske/astro-theme-console@github:thaske/astro-theme-console#ff88afa", { "dependencies": { "date-fns": "^4.1.0", "reading-time": "^1.5.0" }, "peerDependencies": { "astro": "^5.0.0" } }, "thaske-astro-theme-console-ff88afa"],
+    "@thaske/astro-theme-console": ["@thaske/astro-theme-console@github:thaske/astro-theme-console#f13c316", { "dependencies": { "date-fns": "^4.1.0", "reading-time": "^1.5.0" }, "peerDependencies": { "astro": "^5.0.0" } }, "thaske-astro-theme-console-f13c316"],
 
     "@types/debug": ["@types/debug@4.1.12", "", { "dependencies": { "@types/ms": "*" } }, "sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ=="],
 
